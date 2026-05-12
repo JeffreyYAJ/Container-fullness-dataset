@@ -1,1 +1,4 @@
 # requirements for hugging face
+gradio
+ultralytics
+transformers
