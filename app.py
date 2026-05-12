@@ -2,7 +2,7 @@ import gradio as gr
 from ultralytics import YOLO
 
 # On charge votre fichier .pt
-model = YOLO("yolov8n-cls.pt") 
+model = YOLO("models/yolov8n-cls.pt") 
 
 def predict(image):
     results = model(image)
