@@ -1,11 +1,10 @@
----
-title: Container Fullness V0
-emoji: 🚀
-colorFrom: green
-colorTo: yellow
-sdk: gradio # Options: gradio, streamlit, docker, or static
+title: Container Fullness
+emoji: 🏃
+colorFrom: yellow
+colorTo: green
+sdk: gradio
+sdk_version: 6.14.0
 app_file: app.py
 pinned: false
----
-
-# Container-fullness-dataset
+license: apache-2.0
+short_description: trash bin container fullness model - NoThrowam
