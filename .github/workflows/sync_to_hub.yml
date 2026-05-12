@@ -18,5 +18,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # JeffreyYAJ est votre pseudo HF
           git push --force https://JeffreyYAJ:$HF_TOKEN@huggingface.co/spaces/JeffreyYAJ/Container-fullness main
