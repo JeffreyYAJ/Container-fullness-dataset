@@ -1,4 +1,4 @@
-name: Sync to Hugging Face hub
+name: Sync to Hugging Face
 on:
   push:
     branches: [main]
@@ -7,6 +7,8 @@ on:
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
     steps:
       - uses: actions/checkout@v4
         with:
@@ -15,4 +17,6 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://JeffreyYAJ:$HF_TOKEN@huggingface.co/spaces/JeffreyYAJ/Container-fullness main
+        run: |
+          # JeffreyYAJ est votre pseudo HF
+          git push --force https://JeffreyYAJ:$HF_TOKEN@huggingface.co/spaces/JeffreyYAJ/Container-fullness main
