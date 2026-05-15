@@ -1,0 +1,33 @@
+name: Keep Hugging Face Space Alive
+
+# Planification du déclenchement automatique
+on:
+  schedule:
+    # S'exécute tous les jours à 04:00 UTC
+    - cron: '0 4 * * *'
+  # Permet aussi de déclencher l'action manuellement depuis l'interface GitHub
+  workflow_dispatch:
+
+jobs:
+  ping_space:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Send Ping to Hugging Face Space
+      run: |
+        SPACE_URL="https://huggingface.co/spaces/JeffreyYAJ/Container-fullness"
+        
+        echo "Envoi du ping de réveil à $SPACE_URL..."
+        
+        # Un simple appel HTTP GET sur l'API de statut suffit à maintenir le Space actif
+        RESPONSE=$(curl -s -w "%{http_code}" -o /dev/null "$SPACE_URL")
+        
+        if [ "$RESPONSE" -eq 200 ]; then
+          echo "Succès ! Le Space a répondu et reste éveillé."
+        else
+          echo "Avertissement : Le serveur a renvoyé le code HTTP $RESPONSE. Vérifiez l'URL de votre Space."
+          exit 1
+        fi
